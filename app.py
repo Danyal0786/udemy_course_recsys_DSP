@@ -7,6 +7,30 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity,linear_kernel
 
+from PIL import Image
+import streamlit as st
+
+
+# -----------------------------------Setting up Page layout---------------------------------------------------------
+
+im = Image.open("udemy.png")
+st.set_page_config(
+    page_title="Udemy Course Recommander System",
+    page_icon=im,
+    layout="wide",
+)
+
+
+# --------------------------------------------------------------------------------------------
+html_temp = """
+		<div style="background-color:#3872fb;padding:10px;border-radius:10px">
+		<h1 style="color:white;text-align:center;">Udemy Course Recommendation System </h1>
+		<h3 style="color:white;text-align:center;">keep learning and keep Exploring </h3>
+		</div>
+		"""
+
+
+# --------------------------------------------------------------------------------------------
 
 # Load Our Dataset
 def load_data(data):
@@ -72,7 +96,8 @@ def search_term_if_not_found(term,df):
 
 def main():
 
-	st.title("Course Recommendation App")
+	st.title("Course Recommendation App With Streamlit")
+	stc.html(html_temp)
 
 	menu = ["Home","Recommend","About"]
 	choice = st.sidebar.selectbox("Menu",menu)
